@@ -15,12 +15,16 @@ class HomeController implements IControllerBase {
 
   public initRoutes() {
     this.router.get('/', this.index);
+    this.router.get('/health', this.heartbeat);
     this.router.get('/notFound', this.notFound);
     this.router.get('/dbError', this.dbError);
 
     this.router;
   }
 
+  private heartbeat = (req: Request, res: Response) => {
+    res.send("It's Works!");
+  };
   private index = (req: Request, res: Response) => {
     res.send('Hello World');
   };
